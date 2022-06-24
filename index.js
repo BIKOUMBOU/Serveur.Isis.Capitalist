@@ -4,9 +4,10 @@ const { ApolloServer, gql } = require('apollo-server-express');
 
 async function readUserWorld(user) {
     try {
-        const data = await fs.readFile("userworlds/" + user + "- world.json", 'utf8');
+        const data = await fs.readFile("userworlds/" + user + "-world.json", 'utf8');
         return JSON.parse(data);
     } catch (error) {
+        console.log(error)
         return world
     }
 }
@@ -14,7 +15,7 @@ async function readUserWorld(user) {
 
 // chemin complet du monde (monde.js)
 let world = require("./world")
-const fs = require("fs");
+const fs = require("fs").promises;
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = require("./schema")

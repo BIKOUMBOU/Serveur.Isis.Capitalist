@@ -83,7 +83,6 @@ function engagerManager(parent, args, context){
 module.exports = {
     Query: {
         getWorld(parent, args, context) {
-            update(context)
             saveWorld(context)
             return context.world
         }
